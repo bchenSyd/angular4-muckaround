@@ -8,21 +8,23 @@ import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/cor
 export class ChildComponentComponent implements OnInit, OnChanges {
   @Input() user;
   @Input() systemNotification;
+  ownProp: string;
   constructor() {
+
   }
 
-  onNameChange = val => {
-    console.log(`user.name changed to ${val}`);
-    this.user.name = val;
+  onChange = name => val => {
+    console.log(`${name} changed to ${val}`);
   }
 
-  onSystemNotificationChange = val => {
-    console.log(`sysNotification changed to ${val}`);
-    this.systemNotification = val;
-  }
+
 
   childClick() {
-    alert(JSON.stringify(this.user));
+    alert(JSON.stringify({
+      user: this.user,
+      systemNotification: this.systemNotification,
+      ownProp: this.ownProp,
+    });
   }
   ngOnInit() {
   }
