@@ -1,23 +1,44 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-child-component',
   templateUrl: './child-component.component.html',
   styleUrls: ['./child-component.component.less']
 })
-export class ChildComponentComponent implements OnInit {
+export class ChildComponentComponent implements OnInit, OnChanges {
   @Input() user;
+  @Input() systemNotification;
   constructor() {
   }
-  onChange(val) {
-    console.log(val);
+
+  onNameChange = val => {
+    console.log(`user.name changed to ${val}`);
+    this.user.name = val;
   }
+
+  onSystemNotificationChange = val => {
+    console.log(`sysNotification changed to ${val}`);
+    this.systemNotification = val;
+  }
+
   childClick() {
-    // click event will bubble up
     alert(JSON.stringify(this.user));
-    return false; // return false won't stop bubbling
   }
   ngOnInit() {
   }
+
+  ngOnChanges(changes: SimpleChanges) {
+    for (let propName in changes) {
+      const change = changes[propName];
+      console.dir(change);
+      if (change.isFirstChange()) {
+        console.log(`first change: ${propName}`);
+      } else {
+        console.log(`prev: ${change.previousValue}, cur: ${change.currentValue}`);
+      }
+    }
+
+  }
+
 
 }

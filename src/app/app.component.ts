@@ -1,6 +1,6 @@
 import {
   Component, OnInit, OnDestroy, DoCheck, OnChanges,
-  AfterContentChecked, AfterViewInit, AfterViewChecked
+  AfterContentChecked, AfterViewInit, AfterViewChecked, AfterContentInit,
 } from '@angular/core';
 import { LoggerService } from './logger.service';
 
@@ -12,17 +12,23 @@ import { LoggerService } from './logger.service';
   styleUrls: ['./app.component.less'],
   providers: [LoggerService]
 })
-class AppComponent implements OnInit {
+class AppComponent implements OnInit, OnChanges, OnDestroy, DoCheck,
+  AfterViewChecked, AfterContentChecked, AfterViewInit, AfterContentInit {
   title: string;
   currentUser: any;
+  systemNotification: string;
   constructor(private logger: LoggerService) {
     this.title = 'angular4';
     this.currentUser = {
       name: 'bochen',
       age: 35,
     };
+    this.systemNotification = 'welcome to angular4';
   }
 
+  onSubmit() {
+    alert(JSON.stringify(this.currentUser) + '   ' + this.systemNotification);
+  }
   ngOnInit() {
     // Properties are resolved and things like
     // this.mapWindow and this.mapControls

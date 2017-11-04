@@ -1,12 +1,20 @@
 <div class="child">
-  <label for="name">child-component</label>
+  <h2>Child Component</h2>
   <div>
     <div>
-      <input name="name" type="text" (ngModelChange)="onChange($event)" [ngModel]="user.name"/>
+      <label for="">User.Name</label>
+      <input name="name" type="text" [ngModel]="user.name" />
     </div>
     <div>
       <label>age:{{user.age}}</label>
     </div>
+
+    <br/>
+    <div>
+      <label for="">System Notification</label>
+      <input name="name" type="text" [ngModel]="systemNotification" />
+    </div>
+
   </div>
 
   <button (click)="childClick()">Update User</button>
