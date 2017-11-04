@@ -3,7 +3,7 @@
   <div>
     <div>
       <label for="">User.Name</label>
-      <input name="name" type="text" (ngModelChange)="onChange('userName')($event)" [ngModel]="user.name" />
+      <input name="name" type="text"  [(ngModel)]="user.name" />
     </div>
     <div>
       <label>age:{{user.age}}</label>
@@ -18,7 +18,7 @@
         <label for="">own property</label>
         <input name="name" type="text" [(ngModel)]="ownProp" />
       </div>
-
+      <app-nested></app-nested>
   </div>
 
   <button (click)="childClick()">Update User</button>

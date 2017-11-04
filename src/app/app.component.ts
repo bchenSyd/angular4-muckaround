@@ -1,5 +1,6 @@
 import {
-  Component, OnInit, OnDestroy, DoCheck, OnChanges,
+  Component, ChangeDetectionStrategy,
+  OnInit, OnDestroy, DoCheck, OnChanges,
   AfterContentChecked, AfterViewInit, AfterViewChecked, AfterContentInit,
 } from '@angular/core';
 import { LoggerService } from './logger.service';
@@ -10,7 +11,8 @@ import { LoggerService } from './logger.service';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.less'],
-  providers: [LoggerService]
+  providers: [LoggerService],
+  changeDetection: ChangeDetectionStrategy.OnPush // CheckOnce;
 })
 class AppComponent implements OnInit, OnChanges, OnDestroy, DoCheck,
   AfterViewChecked, AfterContentChecked, AfterViewInit, AfterContentInit {
@@ -34,18 +36,18 @@ class AppComponent implements OnInit, OnChanges, OnDestroy, DoCheck,
     // this.mapWindow and this.mapControls
     // had a chance to resolve from the
     // two child components <map-window> and <map-controls>
-    this.logger.log('ngOnInit');
+    this.logger.log('parent ngOnInit');
   }
   ngOnDestroy() {
-    this.logger.log('ngOnDestroy');
+    this.logger.log('parent ngOnDestroy');
   }
 
   ngDoCheck() {
-    // this.logger.log('ngDoCheck give you an extra opportunity to mark as dirty');
+    this.logger.log('parent  ngDoCheck give you an extra opportunity to mark as dirty');
   }
 
   ngOnChanges(changes) {
-    this.logger.log('ngOnChanges');
+    this.logger.log('parent ngOnChanges');
     // Called right after our bindings have been checked but only
     // if one of our bindings has changed.
     //

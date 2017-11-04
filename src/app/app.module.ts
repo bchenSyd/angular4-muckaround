@@ -4,11 +4,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { ChildComponentComponent } from './child-component/child-component.component';
+import { NestedComponent } from './child-component/nested/nested.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ChildComponentComponent
+    ChildComponentComponent,
+    NestedComponent
   ],
   imports: [
     BrowserModule,
