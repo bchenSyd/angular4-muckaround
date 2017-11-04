@@ -9,4 +9,6 @@ It hasn't been reviewed for security issues.
 
 DON'T USE IT FOR PRODUCTION USE!
 ****************************************************************************************
+
+ find src/**/**  -name *.spec.ts | xargs rm -rf
 ```
