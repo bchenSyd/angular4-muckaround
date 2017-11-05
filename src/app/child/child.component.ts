@@ -5,16 +5,16 @@ import {
 import { LoggerService } from '../logger.service';
 
 @Component({
-    selector: 'app-child-component',
-    templateUrl: './child-component.component.html',
-    styleUrls: ['./child-component.component.less'],
+    selector: 'app-child',
+    templateUrl: './child.component.html',
+    styleUrls: ['./child.component.less'],
     providers: [LoggerService],
-    changeDetection: ChangeDetectionStrategy.OnPush // CheckOnce;
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ChildComponentComponent implements OnInit, DoCheck {
+export class ChildComponent implements OnInit, DoCheck {
     @Input() user;
     @Input() systemNotification;
-    ownProp: string = "init";
+    ownProp = 'init';
 
     constructor(private logger: LoggerService) {
 
@@ -24,7 +24,7 @@ export class ChildComponentComponent implements OnInit, DoCheck {
         // console.log(`${name} changed to ${val}`);
     }
 
-    childClick() {
+    showData() {
         alert(JSON.stringify({
             user: this.user,
             systemNotification: this.systemNotification,

@@ -28,8 +28,10 @@ class AppComponent implements OnInit, OnChanges, OnDestroy, DoCheck,
     this.systemNotification = 'welcome to angular4';
   }
 
-  onSubmit() {
-    alert(JSON.stringify(this.currentUser) + '   ' + this.systemNotification);
+  onChangeData() {
+    const random = Math.floor(Math.random() * 100);
+    this.currentUser.name = 'bochen-' + random;
+    this.systemNotification = 'sys-notification => ' + random;
   }
   ngOnInit() {
     // Properties are resolved and things like
