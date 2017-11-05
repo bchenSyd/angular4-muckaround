@@ -1,4 +1,6 @@
 # build
+> https://github.com/angular/angular-cli/wiki#bundling
+
 All builds make use of bundling, and using the `--prod flag` in `ng build --prod` or `ng serve --prod` will also make use of `uglifying` and `tree-shaking` functionality.
 
 ```bash
