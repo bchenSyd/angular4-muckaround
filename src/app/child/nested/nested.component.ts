@@ -3,7 +3,10 @@ import { NgIf } from '@angular/common';
 import { LoggerService } from '../../logger.service';
 @Component({
   selector: 'app-nested',
-  template: `<div><h1>nested</h1> <div *ngIf="condition" >ngIf</div> </div>`,
+  template: `<div style="border:1px blue solid; padding:5px; margin: 5px;">
+                <h1>nested component</h1>
+                <div *ngIf="condition" >ngIf</div>
+             </div>`,
   providers: [LoggerService],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
