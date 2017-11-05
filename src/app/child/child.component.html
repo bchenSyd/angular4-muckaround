@@ -6,7 +6,7 @@
       <input name="name" type="text"  [(ngModel)]="user.name" />
     </div>
     <div>
-      <label>age:{{user.age}}</label>
+      <label *ngIf="showAge">age:{{user.age}}</label>
     </div>
 
     <br/>
@@ -15,8 +15,9 @@
       <input name="name" type="text" [(ngModel)]="systemNotification" />
     </div>
     <div>
-        <label for="">own property</label>
-        <input name="name" type="text" [(ngModel)]="ownProp" />
+        <label for="">show Age: </label>
+        <input name="show_age" type="radio" [(ngModel)]="showAge" [value]="true"/><label>Yes</label>
+        <input name="show_age" type="radio" [(ngModel)]="showAge" [value]="false"/><label>No</label>
       </div>
       <app-nested></app-nested>
   </div>

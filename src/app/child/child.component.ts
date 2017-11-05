@@ -17,26 +17,20 @@ export class ChildComponent implements OnInit, DoCheck {
     @Input() user;
     @Input() systemNotification;
     // changes to ownProp will always cause doCheck return false;
-    ownProp = 'init';
+    showAge = false;
 
-    constructor(private logger: LoggerService) {
-
-    }
-
-    onChange = name => val => {
-        // console.log(`${name} changed to ${val}`);
-    }
+    constructor(private logger: LoggerService) { }
 
     showData() {
         alert(JSON.stringify({
             user: this.user,
             systemNotification: this.systemNotification,
-            ownProp: this.ownProp,
+            showAge: this.showAge,
         }));
     }
 
     ngDoCheck() {
-        this.logger.log('child  ngDoCheck will update those none @inputs');
+        this.logger.log('child  ngDoCheck');
     }
     ngOnInit() {
         this.logger.log('child ngOnInit');
