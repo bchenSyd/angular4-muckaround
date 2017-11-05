@@ -12,8 +12,11 @@ import { LoggerService } from '../logger.service';
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ChildComponent implements OnInit, DoCheck {
+    // changes to @input will only cause doCheck return true if they
+    // are new instances (shallowEqual false)
     @Input() user;
     @Input() systemNotification;
+    // changes to ownProp will always cause doCheck return false;
     ownProp = 'init';
 
     constructor(private logger: LoggerService) {

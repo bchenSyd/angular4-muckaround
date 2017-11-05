@@ -31,7 +31,11 @@ class AppComponent implements OnInit, OnChanges, OnDestroy, DoCheck,
   onChangeData() {
     const random = Math.floor(Math.random() * 100);
     this.currentUser.name = 'bochen-' + random;
-    this.systemNotification = 'sys-notification => ' + random;
+
+    // if you comment out below line, changes to currentUser won't take effect on dom
+    // child.doCheck return false, nest gets skipped
+    // because child @input hasn't changed, nor its own binding changes
+    // this.systemNotification = 'sys-notification => ' + random;
   }
   ngOnInit() {
     // Properties are resolved and things like
@@ -40,9 +44,6 @@ class AppComponent implements OnInit, OnChanges, OnDestroy, DoCheck,
     // two child components <map-window> and <map-controls>
     this.logger.log('parent ngOnInit');
   }
-  ngOnDestroy() {
-    this.logger.log('parent ngOnDestroy');
-  }
 
   ngDoCheck() {
     this.logger.log('parent  ngDoCheck give you an extra opportunity to mark as dirty');
@@ -50,14 +51,12 @@ class AppComponent implements OnInit, OnChanges, OnDestroy, DoCheck,
 
   ngOnChanges(changes) {
     this.logger.log('parent ngOnChanges');
-    // Called right after our bindings have been checked but only
-    // if one of our bindings has changed.
-    //
-    // changes is an object of the format:
-    // {
-    //   'prop': PropertyUpdate
-    // }
   }
+
+  ngOnDestroy() {
+    this.logger.log('parent ngOnDestroy');
+  }
+
   ngAfterContentInit() {
     // Component content has been initialized
   }

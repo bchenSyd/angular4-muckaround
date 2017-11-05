@@ -13,6 +13,16 @@ DON'T USE IT FOR PRODUCTION USE!
  find src/**/**  -name *.spec.ts | xargs rm -rf
 ```
 
+## changeDetectionStrategy.onPush
+```javascript
+    // changes to @input will only cause doCheck return true if they
+    // are new instances (shallowEqual false)
+    @Input() user;
+    @Input() systemNotification;
+    // changes to ownProp will always cause doCheck return false;
+    ownProp = 'init';
+```
+
 # rename `child-component.component.*` to `child.component.*`
 > `%/*` and `#.*` are bash string manipulation, see http://tldp.org/LDP/abs/html/string-manipulation.html
   * ${string#substring}  strip off shortest match; from front;
