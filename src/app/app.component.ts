@@ -46,7 +46,7 @@ class AppComponent implements OnInit, OnChanges, OnDestroy, DoCheck,
   }
 
   ngDoCheck() {
-    this.logger.log('parent  ngDoCheck give you an extra opportunity to mark as dirty');
+    this.logger.log('parent  ngDoCheck');
   }
 
   ngOnChanges(changes) {
